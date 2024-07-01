@@ -11,9 +11,7 @@ class Checker
             Console.WriteLine("Temperature is out of range!");
             return false;
         }
-             Console.WriteLine("Temperature is within Range");
             return true;
-        
     }
 
     static bool IssocOk(float soc)
@@ -23,8 +21,6 @@ class Checker
             Console.WriteLine("State of Charge is out of range!");
             return false;
          }
-       
-             Console.WriteLine("State of Charge is within Range");
              return true;
     }
 
@@ -34,15 +30,10 @@ class Checker
             Console.WriteLine("Charge Rate is out of range!");
             return false;
         }        
-            Console.WriteLine("Charge Rate is within Range");
              return true;
-
     }
     static bool batteryIsOk(float temperature, float soc, float chargeRate) {
-         bool tempok =IsTemperatureOk( temperature);
-         bool socok =IssocOk( soc);
-         bool chargerateok =IsChargeRateOk( chargeRate);        
-        return tempok && socok && chargerateok;
+      return IsTemperatureOk( temperature) && IssocOk( soc) && IsChargeRateOk( chargeRate);
     }
 
     static void ExpectTrue(bool expression) {
