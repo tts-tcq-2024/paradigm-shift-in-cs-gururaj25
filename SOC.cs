@@ -1,3 +1,7 @@
+using System;
+using System.Diagnostics;
+namespace paradigm_shift_csharp
+{
 public class SOC : IChecker
 {
     public bool Check(float soc)
@@ -19,4 +23,5 @@ public class SOC : IChecker
     {
         Console.WriteLine("Warn");
     }
+}
 }
