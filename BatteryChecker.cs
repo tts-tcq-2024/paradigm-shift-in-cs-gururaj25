@@ -13,9 +13,9 @@ namespace paradigm_shift_csharp
     }
     public bool IsBatteryOk(float temperature, float soc, float chargeRate)
     {
-      IChecker  checkTemp =  new TemperatureCheck();
-      IChecker  checksoc   =new SocCheck();
-      IChecker  checkChargeRate  =new ChargeRateCheck() ;
+      IChecker  checkTemp =  new Temperature();
+      IChecker  checksoc   =new SOC();
+      IChecker  checkChargeRate  =new ChargeRate() ;
       var tempResult= checkTemp.Check(GetValueForCheck(checkTemp, temperature, soc, chargeRate);
       var socResult= checksoc.Check(GetValueForCheck(checksoc, temperature, soc, chargeRate);
       var chargeRateResult= checkChargeRate.Check(GetValueForCheck(checkChargeRate, temperature, soc, chargeRate)
