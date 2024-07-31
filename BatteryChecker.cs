@@ -5,11 +5,10 @@ namespace paradigm_shift_csharp
 
     public class BatteryChecker
     {
-        private IChecker check;
-
-        public BatteryChecker(IChecker check)
+        
+        public BatteryChecker()
         {
-            this.check = check;
+            
         }
         public bool IsBatteryOk(float temperature, float soc, float chargeRate)
         {
