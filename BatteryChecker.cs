@@ -18,9 +18,10 @@ namespace paradigm_shift_csharp
             var tempResult = checkTemp.Check(GetValueForCheck(checkTemp, temperature, soc, chargeRate));
             var socResult = checksoc.Check(GetValueForCheck(checksoc, temperature, soc, chargeRate));
             var chargeRateResult = checkChargeRate.Check(GetValueForCheck(checkChargeRate, temperature, soc, chargeRate));
-
-                    return tempResult && socResult && chargeRateResult;
-
+                 bool returnresult = tempResult && socResult && chargeRateResult;
+                Console.WriteLine($"TempResult: {tempResult} SOCResult :{socResult} ChargeResult :{chargeRateResult} ReturnResult:{returnresult}");
+            return returnresult; 
+          
         }
 
         private float GetValueForCheck(IChecker check, float temperature, float soc, float chargeRate)
