@@ -2,27 +2,39 @@ using System;
 using System.Diagnostics;
 namespace paradigm_shift_csharp
 {
-  public class Temperature : IChecker
-{
-    public bool Check(float temperature)
+    public class Temperature : IChecker
     {
-        if (temperature < 0 || temperature > 45)
+        private const int MinTemperature = 0;
+        private const int MaxTemperature = 100;
+
+        public bool Check(float temperature)
         {
-            Console.WriteLine("Temperature is out of range!");
-            return false;
+            if (temperature < MinTemperature || temperature > MaxTemperature)
+            {
+                return false;
+            }
+            return true;
         }
-        return true;
 
-    }
+        public void DisplayStatus(float temperature)
+        {
+             if (temperature < MinTemperature)
+            {
+                Console.WriteLine("Temperature is below the minimum threshold!");
+            }
+            else if (temperature > MaxTemperature)
+            {
+                Console.WriteLine("Temperature is above the maximum threshold!");
+            }
+            else
+            {
+                Console.WriteLine("Temperature is within the acceptable range.");
+            }
+        }
 
-    public void DisplayStatus(float temperature)
-    {
-        Console.WriteLine("Temperature is: " + temperature);
+        public void Warn()
+        {
+            Console.WriteLine("Warn");
+        }
     }
-
-    public void Warn()
-    {
-        Console.WriteLine("Warn");
-    }
-}
 }
