@@ -5,7 +5,7 @@ namespace paradigm_shift_csharp
     public class Temperature : IChecker
     {
         private const int MinTemperature = 0;
-        private const int MaxTemperature = 100;
+        private const int MaxTemperature = 45;
 
         public bool Check(float temperature)
         {
