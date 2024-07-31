@@ -14,7 +14,11 @@ namespace paradigm_shift_csharp
         static void Main(string[] args)
         {
             BatteryCheckerTests.ExpectTrue(batteryIsOk(25, 70, 0.7f));
-            BatteryCheckerTests.ExpectFalse(batteryIsOk(50, 85, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryIsOk(40, 19, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryIsOk(35, 85, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryIsOk(50, 25, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryIsOk(-1, 85, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryIsOk(40, 25, 0.9f));
             BatteryCheckerTests.ExpectFalse(batteryIsOk(50, 85, 0.9f));
             Console.WriteLine("All ok");
             Console.ReadLine();
