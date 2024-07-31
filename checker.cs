@@ -1,59 +1,29 @@
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace paradigm_shift_csharp
 {
-class Checker
-{
-    static bool IsTemperatureOk(float temperature)
+    public class Program
     {
-         if(temperature < 0 || temperature > 45) 
-         {
-            Console.WriteLine("Temperature is out of range!");
-            return false;
+        static ChargeRate chargeRateobj = new ChargeRate();
+        static Temperature tempobj = new Temperature();
+        static SOC socobj = new SOC();
+        static void Main(string[] args)
+        {
+            BatteryCheckerTests.ExpectTrue(batteryIsOk(25, 70, 0.7f));
+            BatteryCheckerTests.ExpectFalse(batteryIsOk(50, 85, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryIsOk(50, 85, 0.9f));
+            Console.WriteLine("All ok");
+            Console.ReadLine();
+            //return 0;
         }
-            return true;
-    }
 
-    static bool IssocOk(float soc)
-    {
-         if(soc < 20 || soc > 80)
-         {
-            Console.WriteLine("State of Charge is out of range!");
-            return false;
-         }
-             return true;
-    }
-
-    static bool IsChargeRateOk(float chargeRate)
-    {
-        if(chargeRate > 0.8) {
-            Console.WriteLine("Charge Rate is out of range!");
-            return false;
-        }        
-             return true;
-    }
-    static bool batteryIsOk(float temperature, float soc, float chargeRate) {
-      return IsTemperatureOk( temperature) && IssocOk( soc) && IsChargeRateOk( chargeRate);
-    }
-
-    static void ExpectTrue(bool expression) {
-        if(!expression) {
-            Console.WriteLine("Expected true, but got false");
-            Environment.Exit(1);
+        public static bool batteryIsOk(float temperature, float soc, float chargeRateValue)
+        {
+            return tempobj.Check(temperature) && socobj.Check(soc) && chargeRateobj.Check(chargeRateValue);
         }
     }
-    static void ExpectFalse(bool expression) {
-        if(expression) {
-            Console.WriteLine("Expected false, but got true");
-            Environment.Exit(1);
-        }
-    }
-    static int Main() {
-        ExpectTrue(batteryIsOk(25, 70, 0.7f));
-        ExpectFalse(batteryIsOk(50, 85, 0.0f));
-        Console.WriteLine("All ok");
-        return 0;
-    }
-    
-}
 }
