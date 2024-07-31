@@ -26,7 +26,8 @@ namespace paradigm_shift_csharp
 
         private float GetValueForCheck(IChecker check, float temperature, float soc, float chargeRate)
         {
-            var valueMap = new Dictionary<Type, float>
+            return 0;
+            /*var valueMap = new Dictionary<Type, float>
             {
                 { typeof(Temperature), temperature },
                 { typeof(SOC), soc },
@@ -34,6 +35,7 @@ namespace paradigm_shift_csharp
             };
 
             return valueMap.TryGetValue(check.GetType(), out float value) ? value : 0;
+            */
         }
     }
 }
