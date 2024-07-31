@@ -2,26 +2,45 @@ using System;
 using System.Diagnostics;
 namespace paradigm_shift_csharp
 {
-  public class ChargeRate : IChecker
-  {
-    public bool Check(float chargeRate)
+    public class ChargeRate : IChecker
     {
-        if (chargeRate > 0.8)
+        private const int MinChargeRate = 0;
+        private const int MaxChargeRate = 10;
+        private int m_ChargeRate;
+
+        public bool Check(float chargeRate)
         {
-            Console.WriteLine("Charge Rate is out of range!");
-            return false;
+            if (chargeRate < MinChargeRate || chargeRate > MaxChargeRate)
+            {                
+                return false;
+            }
+            return true;
         }
-        return true;
 
-    }
+        public void DisplayStatus(float chargeRate)
+        {
+            if (chargeRate < MinChargeRate || chargeRate > MaxChargeRate)
+            {
+                Console.WriteLine("Charge rate is out of range!");
+                
+            }
+            else if (chargeRate < MinChargeRate)
+            {
+                Console.WriteLine("Charge rate is below the minimum threshold!");
+            }
+            else if (chargeRate > MaxChargeRate)
+            {
+                Console.WriteLine("Charge rate is above the maximum threshold!");
+            }
+            else
+            {
+                Console.WriteLine("Charge rate is within the acceptable range.");
+            }
+        }
 
-    public void DisplayStatus(float chargeRate)
-    {
-        Console.WriteLine("Charge Rate is: " + chargeRate);
+        public void Warn()
+        {
+            Console.WriteLine("Warn");
+        }
     }
-    public void Warn()
-    {
-        Console.WriteLine("Warn");
-    }
-  }
 }
