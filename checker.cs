@@ -11,23 +11,20 @@ namespace paradigm_shift_csharp
         static ChargeRate chargeRateobj = new ChargeRate();
         static Temperature tempobj = new Temperature();
         static SOC socobj = new SOC();
+        static BatteryChecker batteryChecker = new BatteryChecker();
         static void Main(string[] args)
         {
-            BatteryCheckerTests.ExpectTrue(batteryIsOk(25, 70, 0.7f));
-            BatteryCheckerTests.ExpectFalse(batteryIsOk(40, 19, 0.0f));
-            BatteryCheckerTests.ExpectFalse(batteryIsOk(35, 85, 0.0f));
-            BatteryCheckerTests.ExpectFalse(batteryIsOk(50, 25, 0.0f));
-            BatteryCheckerTests.ExpectFalse(batteryIsOk(-1, 85, 0.0f));
-            BatteryCheckerTests.ExpectFalse(batteryIsOk(40, 25, 0.9f));
-            BatteryCheckerTests.ExpectFalse(batteryIsOk(50, 85, 0.9f));
+            BatteryCheckerTests.ExpectTrue(batteryChecker.IsBatteryOk(25, 70, 0.7f));
+            BatteryCheckerTests.ExpectFalse(batteryChecker.IsBatteryOk(40, 19, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryChecker.IsBatteryOk(35, 85, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryChecker.IsBatteryOk(50, 25, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryChecker.IsBatteryOk(-1, 85, 0.0f));
+            BatteryCheckerTests.ExpectFalse(batteryChecker.IsBatteryOk(40, 25, 0.9f));
+            BatteryCheckerTests.ExpectFalse(batteryChecker.IsBatteryOk(50, 85, 0.9f));
             Console.WriteLine("All ok");
             Console.ReadLine();
             //return 0;
         }
-
-        public static bool batteryIsOk(float temperature, float soc, float chargeRateValue)
-        {
-            return tempobj.Check(temperature) && socobj.Check(soc) && chargeRateobj.Check(chargeRateValue);
-        }
+       
     }
 }
