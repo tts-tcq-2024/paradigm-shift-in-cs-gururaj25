@@ -4,8 +4,8 @@ namespace paradigm_shift_csharp
 {
     public class ChargeRate : IChecker
     {
-        private const int MinChargeRate = 0;
-        private const int MaxChargeRate = 10;
+        private const double MinChargeRate = 0.0;
+        private const double MaxChargeRate = 0.8;
         private int m_ChargeRate;
 
         public bool Check(float chargeRate)
