@@ -19,12 +19,7 @@ namespace paradigm_shift_csharp
 
         public void DisplayStatus(float chargeRate)
         {
-            if (chargeRate < MinChargeRate || chargeRate > MaxChargeRate)
-            {
-                Console.WriteLine("Charge rate is out of range!");
-                
-            }
-            else if (chargeRate < MinChargeRate)
+            if (chargeRate < MinChargeRate)
             {
                 Console.WriteLine("Charge rate is below the minimum threshold!");
             }
