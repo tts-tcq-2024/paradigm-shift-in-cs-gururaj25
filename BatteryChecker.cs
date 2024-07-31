@@ -26,11 +26,14 @@ namespace paradigm_shift_csharp
 
         private float GetValueForCheck(IChecker check, float temperature, float soc, float chargeRate)
         {
-            float returnCheck =0;
-            if (check is Temperature) returnCheck= temperature ;
-            if (check is SOC) returnCheck= soc;
-            if (check is ChargeRate) returnCheck = chargeRate;
-            return returnCheck;
+            var valueMap = new Dictionary<Type, float>
+            {
+                { typeof(Temperature), temperature },
+                { typeof(SOC), soc },
+                { typeof(ChargeRate), chargeRate }
+            };
+
+            return valueMap.TryGetValue(check.GetType(), out float value) ? value : 0;
         }
     }
 }
